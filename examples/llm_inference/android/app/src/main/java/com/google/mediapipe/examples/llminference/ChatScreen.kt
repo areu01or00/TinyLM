@@ -97,24 +97,27 @@ fun ChatScreen(
 
     Column(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         verticalArrangement = Arrangement.Bottom
     ) {
         // Top bar with close button
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .padding(horizontal = 16.dp, vertical = 8.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = InferenceModel.model.toString(),
-                style = MaterialTheme.typography.titleSmall
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.primary
             )
             Text(
                 text = if (tokens >= 0) "$tokens ${stringResource(R.string.tokens_remaining)}" else "",
-                style = MaterialTheme.typography.titleSmall
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.secondary
             )
             // Wrap the buttons in another Row to keep them together
             Row {
@@ -126,7 +129,11 @@ fun ChatScreen(
                     },
                     enabled = textInputEnabled
                 ) {
-                    Icon(Icons.Default.Refresh, contentDescription = "Clear Chat")
+                    Icon(
+                        Icons.Default.Refresh, 
+                        contentDescription = "Clear Chat",
+                        tint = MaterialTheme.colorScheme.primary
+                    )
                 }
 
                 IconButton(
@@ -138,7 +145,11 @@ fun ChatScreen(
                     },
                     enabled = textInputEnabled
                 ) {
-                    Icon(Icons.Default.Close, contentDescription = "Close Chat")
+                    Icon(
+                        Icons.Default.Close, 
+                        contentDescription = "Close Chat",
+                        tint = MaterialTheme.colorScheme.primary
+                    )
                 }
             }
         }
@@ -148,15 +159,15 @@ fun ChatScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.LightGray)
-                    .padding(8.dp),
+                    .background(MaterialTheme.colorScheme.errorContainer)
+                    .padding(vertical = 8.dp, horizontal = 16.dp),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = stringResource(R.string.context_full_message),
-                    style = MaterialTheme.typography.titleSmall,
-                    color = Color.Red,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.error,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -167,7 +178,7 @@ fun ChatScreen(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 16.dp),
             reverseLayout = true
         ) {
             items(uiState.messages) { chat ->
@@ -178,14 +189,10 @@ fun ChatScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp, horizontal = 4.dp),
+                .background(MaterialTheme.colorScheme.surface)
+                .padding(vertical = 16.dp, horizontal = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-
-            Column { }
-
-            Spacer(modifier = Modifier.width(8.dp))
-
             TextField(
                 value = userMessage,
                 onValueChange = { userMessage = it
@@ -198,7 +205,10 @@ fun ChatScreen(
                     capitalization = KeyboardCapitalization.Sentences,
                 ),
                 label = {
-                    Text(stringResource(R.string.chat_label))
+                    Text(
+                        text = stringResource(R.string.chat_label),
+                        color = MaterialTheme.colorScheme.primary
+                    )
                 },
                 modifier = Modifier
                     .weight(0.85f)
@@ -207,7 +217,15 @@ fun ChatScreen(
                             onChangedMessage(userMessage)
                         }
                     },
-                enabled = textInputEnabled
+                enabled = textInputEnabled,
+                colors = androidx.compose.material3.TextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    cursorColor = MaterialTheme.colorScheme.primary
+                )
             )
 
             IconButton(
@@ -227,7 +245,7 @@ fun ChatScreen(
                 Icon(
                     Icons.AutoMirrored.Default.Send,
                     contentDescription = stringResource(R.string.action_send),
-                    modifier = Modifier
+                    tint = if (textInputEnabled && tokens > 0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
                 )
             }
         }
@@ -238,12 +256,20 @@ fun ChatScreen(
 fun ChatItem(
     chatMessage: ChatMessage
 ) {
+    val isPurpleTheme = true // Flag to use purple theme
+    
     val backgroundColor = if (chatMessage.isFromUser) {
-        MaterialTheme.colorScheme.tertiaryContainer
+        MaterialTheme.colorScheme.primary
     } else if (chatMessage.isThinking) {
         MaterialTheme.colorScheme.primaryContainer
     } else {
         MaterialTheme.colorScheme.secondaryContainer
+    }
+    
+    val textColor = if (chatMessage.isFromUser) {
+        MaterialTheme.colorScheme.onPrimary
+    } else {
+        MaterialTheme.colorScheme.onSurface
     }
 
     val bubbleShape = if (chatMessage.isFromUser) {
@@ -274,7 +300,8 @@ fun ChatItem(
         Text(
             text = author,
             style = MaterialTheme.typography.bodySmall,
-            modifier = Modifier.padding(bottom = 4.dp)
+            modifier = Modifier.padding(bottom = 4.dp),
+            color = textColor
         )
         Row {
             BoxWithConstraints {
@@ -290,7 +317,8 @@ fun ChatItem(
                     } else {
                         Text(
                             text = chatMessage.message,
-                            modifier = Modifier.padding(16.dp)
+                            modifier = Modifier.padding(16.dp),
+                            color = textColor
                         )
                     }
                 }

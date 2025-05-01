@@ -3,6 +3,9 @@ package com.google.mediapipe.examples.llminference
 import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -174,16 +177,56 @@ private suspend fun deleteDownloadedFile(context: Context) {
 fun DownloadIndicator(progress: Int, onCancel: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp)
     ) {
         Text(
-            text = "Downloading Model: $progress%",
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(bottom = 8.dp)
+            text = "Downloading Model",
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(bottom = 16.dp)
         )
-        CircularProgressIndicator(progress = { progress / 100f })
-        Button(onClick = onCancel, modifier = Modifier.padding(top = 8.dp)) {
-            Text("Cancel")
+        
+        Text(
+            text = "$progress%",
+            style = MaterialTheme.typography.headlineMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier.padding(bottom = 32.dp)
+        )
+        
+        Box(
+            modifier = Modifier
+                .padding(16.dp)
+                .size(150.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator(
+                progress = { progress / 100f },
+                modifier = Modifier.size(150.dp),
+                color = MaterialTheme.colorScheme.primary,
+                strokeWidth = 8.dp
+            )
+            
+            Text(
+                text = "$progress%",
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
+        
+        Spacer(modifier = Modifier.height(32.dp))
+        
+        Button(
+            onClick = onCancel,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.errorContainer,
+                contentColor = MaterialTheme.colorScheme.error
+            ),
+            shape = RoundedCornerShape(12.dp)
+        ) {
+            Text("Cancel Download")
         }
     }
 }
@@ -192,15 +235,37 @@ fun DownloadIndicator(progress: Int, onCancel: () -> Unit) {
 fun LoadingIndicator() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp)
     ) {
         Text(
             text = stringResource(R.string.loading_model),
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier
-                .padding(bottom = 8.dp)
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(bottom = 32.dp)
         )
-        CircularProgressIndicator()
+        
+        Box(
+            modifier = Modifier
+                .padding(16.dp)
+                .size(150.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(150.dp),
+                color = MaterialTheme.colorScheme.primary,
+                strokeWidth = 8.dp
+            )
+        }
+        
+        Text(
+            text = "Please wait...",
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier.padding(top = 32.dp)
+        )
     }
 }
 
@@ -212,15 +277,45 @@ fun ErrorMessage(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp)
     ) {
+        Icon(
+            imageVector = Icons.Default.Warning,
+            contentDescription = "Error",
+            tint = MaterialTheme.colorScheme.error,
+            modifier = Modifier
+                .size(80.dp)
+                .padding(bottom = 24.dp)
+        )
+        
         Text(
-            text = errorMessage,
+            text = "Error Loading Model",
+            style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.error,
             textAlign = TextAlign.Center,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+        
+        Text(
+            text = errorMessage,
+            color = MaterialTheme.colorScheme.onBackground,
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(16.dp)
         )
-        Button(onClick = onGoBack, modifier = Modifier.padding(top = 16.dp)) {
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        Button(
+            onClick = onGoBack,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            ),
+            shape = RoundedCornerShape(12.dp),
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
             Text("Go Back")
         }
     }

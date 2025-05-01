@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LLMInference"
+        android:theme="@style/Theme.TinyLM"
         tools:targetApi="31">
 
         <activity android:name="com.google.mediapipe.examples.llminference.OAuthCallbackActivity"
@@ -29,19 +29,19 @@
 
         <activity android:name="com.google.mediapipe.examples.llminference.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.LLMInference">
+            android:theme="@style/Theme.TinyLM">
         </activity>
 
         <activity android:name="com.google.mediapipe.examples.llminference.LicenseAcknowledgmentActivity"
             android:exported="true"
-            android:theme="@style/Theme.LLMInference">
+            android:theme="@style/Theme.TinyLM">
         </activity>
 
         <activity
             android:name="com.google.mediapipe.examples.llminference.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.LLMInference"
+            android:theme="@style/Theme.TinyLM"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
