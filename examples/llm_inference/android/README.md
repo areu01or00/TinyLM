@@ -18,18 +18,32 @@ The app leverages the MediaPipe LLM Inference API to enable on-device AI tasks t
 
 ## Supported Models
 
-TinyLM currently supports the following models:
+TinyLM supports a variety of powerful LLM models optimized for on-device performance:
 
-- **DeepSeek-Coder** - Optimized for coding tasks and programming assistance
-- **Gemma** - Google's lightweight, state-of-the-art open model
-- **TinyLlama** - Compact yet capable language model for mobile devices
-- **Phi-2** - Microsoft's small-scale LLM with strong reasoning capabilities
+### Gemma Models
+- **Gemma 3 1B IT** (CPU/GPU variants) - Google's latest small, lightweight open model
+- **Gemma 2 2B IT** - Previous generation of Google's capable open model
+
+### Llama Models
+- **Llama 3.2 1B Instruct** - Meta's compact yet powerful instruction-tuned model
+- **Llama 3.2 3B Instruct** - Larger variant with enhanced capabilities
+
+### Qwen Models
+- **Qwen2 0.5B Instruct** - Ultra-compact model for light devices
+- **Qwen2 1.5B Instruct** - Mid-sized balanced performance model
+- **Qwen2 5.3B Instruct** - Larger model with enhanced capabilities
+
+### Other Models
+- **DeepSeek R1 Distill Qwen 1.5B** - Knowledge-distilled model optimized for mobile
+- **Phi-4 Mini Instruct** - Microsoft's compact yet capable reasoning model
+- **SmolLM 135M Instruct** - Extremely lightweight LLM for constrained devices
+- **TinyLlama 1.1B Chat** - Efficient small language model optimized for chat
 
 ### Coming Soon!
 
 We're actively working on adding support for these powerful models:
 
-- **Qwen 3** - Alibaba's latest cutting-edge LLM optimized for mobile performance
+- **Qwen 3** - Alibaba's next-generation LLM optimized for mobile performance
 - Additional specialized models optimized for on-device inference
 
 ## Quick Installation
