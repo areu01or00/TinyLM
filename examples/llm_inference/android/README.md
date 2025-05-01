@@ -16,6 +16,22 @@ TinyLM is a modern Android application that lets you run powerful Large Language
 
 The app leverages the MediaPipe LLM Inference API to enable on-device AI tasks that would typically require cloud processing.
 
+## Supported Models
+
+TinyLM currently supports the following models:
+
+- **DeepSeek-Coder** - Optimized for coding tasks and programming assistance
+- **Gemma** - Google's lightweight, state-of-the-art open model
+- **TinyLlama** - Compact yet capable language model for mobile devices
+- **Phi-2** - Microsoft's small-scale LLM with strong reasoning capabilities
+
+### Coming Soon!
+
+We're actively working on adding support for these powerful models:
+
+- **Qwen 3** - Alibaba's latest cutting-edge LLM optimized for mobile performance
+- Additional specialized models optimized for on-device inference
+
 ## Quick Installation
 
 ### Direct APK Download
