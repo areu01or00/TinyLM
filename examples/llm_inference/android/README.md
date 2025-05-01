@@ -4,7 +4,7 @@
 
 TinyLM is a modern Android application that lets you run powerful Large Language Models (LLMs) directly on your Android device - **no cloud required**. All processing happens on-device, ensuring your interactions remain private while delivering impressive AI capabilities.
 
-## 📱 [Download TinyLM APK](https://github.com/areu01or00/TinyLM/raw/tinylm-release/examples/llm_inference/android/apk-distribution/TinyLM.apk)
+## 📱 [Download TinyLM APK (Signed)](https://github.com/areu01or00/TinyLM/raw/tinylm-release/examples/llm_inference/android/apk-distribution/TinyLM-signed.apk)
 
 ### Features
 
@@ -21,7 +21,7 @@ The app leverages the MediaPipe LLM Inference API to enable on-device AI tasks t
 ### Direct APK Download
 
 Download and install TinyLM directly from this repository:
-- 📥 **[Download TinyLM APK](https://github.com/areu01or00/TinyLM/raw/tinylm-release/examples/llm_inference/android/apk-distribution/TinyLM.apk)**
+- 📥 **[Download TinyLM APK (Signed)](https://github.com/areu01or00/TinyLM/raw/tinylm-release/examples/llm_inference/android/apk-distribution/TinyLM-signed.apk)**
 
 To install:
 1. Download the APK file on your Android device
