@@ -6,7 +6,17 @@ TinyLM is a modern Android application that lets you run powerful language model
 
 This application must be run on a physical Android device to take advantage of the device GPU.
 
-![LLM Inference Demo](llm_inference.png)
+## Quick Installation
+
+### Direct APK Download
+
+You can download the APK directly from this repository:
+- [Download TinyLM APK](https://github.com/areu01or00/TinyLM/raw/tinylm-release/examples/llm_inference/android/apk-distribution/TinyLM.apk)
+
+To install:
+1. Download the APK file on your Android device
+2. Open the APK file and allow installation from unknown sources if prompted
+3. Follow the on-screen instructions to install
 
 ## How to Build the App
 
@@ -15,7 +25,7 @@ This application must be run on a physical Android device to take advantage of t
 To download the code, clone the git repository using the following command:
 
 ```
-git clone https://github.com/google-ai-edge/mediapipe-samples
+git clone https://github.com/areu01or00/TinyLM.git
 ```
 
 After downloading the code, you can import the project into Android Studio and run the app with the following instructions.
@@ -36,7 +46,7 @@ To import and build the app:
 
 2. From the Android Studio, select **File > New > Import Project**.
 
-3. Navigate to the app `android` directory and select that directory, for example: `.../mediapipe-samples/examples/llm_inference/android`
+3. Navigate to the app `android` directory and select that directory, for example: `.../TinyLM/examples/llm_inference/android`
 
 4. If Android Studio requests a Gradle Sync, choose **OK**.
 
