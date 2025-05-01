@@ -1,22 +1,34 @@
-# TinyLM Android App
+# TinyLM - Run Powerful LLM Models on Your Android Device
 
 ### Overview
 
-TinyLM is a modern Android application that lets you run powerful language models directly on your device. This app leverages the MediaPipe LLM Inference API to run common text-to-text generation tasks like information retrieval, email drafting, and document summarization.
+TinyLM is a modern Android application that lets you run powerful Large Language Models (LLMs) directly on your Android device - **no cloud required**. All processing happens on-device, ensuring your interactions remain private while delivering impressive AI capabilities.
 
-This application must be run on a physical Android device to take advantage of the device GPU.
+## 📱 [Download TinyLM APK](https://github.com/areu01or00/TinyLM/raw/tinylm-release/examples/llm_inference/android/apk-distribution/TinyLM.apk)
+
+### Features
+
+- Run LLM models completely on your Android device
+- Chat with AI assistants without internet connectivity
+- Generate text, summaries, and creative content
+- Process all data locally for enhanced privacy
+- Modern, intuitive user interface
+
+The app leverages the MediaPipe LLM Inference API to enable on-device AI tasks that would typically require cloud processing.
 
 ## Quick Installation
 
 ### Direct APK Download
 
-You can download the APK directly from this repository:
-- [Download TinyLM APK](https://github.com/areu01or00/TinyLM/raw/tinylm-release/examples/llm_inference/android/apk-distribution/TinyLM.apk)
+Download and install TinyLM directly from this repository:
+- 📥 **[Download TinyLM APK](https://github.com/areu01or00/TinyLM/raw/tinylm-release/examples/llm_inference/android/apk-distribution/TinyLM.apk)**
 
 To install:
 1. Download the APK file on your Android device
 2. Open the APK file and allow installation from unknown sources if prompted
 3. Follow the on-screen instructions to install
+
+**Note**: This application must be run on a physical Android device to take advantage of the device GPU.
 
 ## How to Build the App
 
